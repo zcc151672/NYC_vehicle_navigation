@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Network Analysis</title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<style>
+			html,
+			body,
+			#viewDiv {
+				padding: 0;
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+			
+			.dropbtn {
+			    background-color: white;
+			    border: none;
+			    cursor: pointer;
+			
+				color: #555f66;
+					font-family: "Roboto", Helvetica, sans-serif;
+					display: inline-block;
+					text-decoration: none;
+					font-size: 1em;
+					font-weight: 300;
+					line-height: 1.75em;
+			}
+			
+			.dropdown {
+			    position: relative;
+			    display: inline-block;
+				width: 160px;
+			}
+			
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #f9f9f9;
+			    min-width: 160px;
+			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			}
+			
+			.dropdown-content a {
+			    color: black;
+			    padding: 12px 16px;
+			    text-decoration: none;
+			    display: block;
+				font-size: 0.8em;
+				font-weight: bold
+			}
+			
+			.dropdown-content a:hover {background-color: #f1f1f1}
+			
+			.dropdown:hover .dropdown-content {
+			    display: block;
+			}
+			
+			.dropdown:hover .dropbtn {
+			    background-color: white;
+			}
+		</style>
+
+		<link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
+		<script src="https://js.arcgis.com/4.11/"></script>
+
+		<script>
+			require([
+				"esri/Map",
+				"esri/views/MapView",
+				"esri/Graphic",
+				"esri/layers/GraphicsLayer",
+				"esri/tasks/RouteTask",
+				"esri/tasks/support/RouteParameters",
+				"esri/tasks/support/FeatureSet",
+				"esri/layers/FeatureLayer",
+				"esri/layers/ImageryLayer",
+				"esri/widgets/ScaleBar",
+				"esri/layers/GroupLayer",
+				"esri/widgets/LayerList"
+			], function(
+				Map,
+				MapView,
+				Graphic,
+				GraphicsLayer,
+				RouteTask,
+				RouteParameters,
+				FeatureSet,
+				FeatureLayer,
+				ImageryLayer,
+				ScaleBar,
+				GroupLayer,
+				LayerList
+			) {
+				var time = new Date();
+				var hh = time.getHours()
+				
+				var routeTask0 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network0/NAServer/Route"
+				});
+				var routeTask1 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network1/NAServer/Route"
+				});
+				var routeTask2 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network2/NAServer/Route"
+				});
+				var routeTask3 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network3/NAServer/Route"
+				});
+				var routeTask4 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network4/NAServer/Route"
+				});
+				var routeTask5 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network5/NAServer/Route"
+				});
+				var routeTask6 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network6/NAServer/Route"
+				});
+				var routeTask7 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network7/NAServer/Route"
+				});
+				var routeTask8 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network8/NAServer/Route"
+				});
+				var routeTask9 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network9/NAServer/Route"
+				});
+				var routeTask10 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network10/NAServer/Route"
+				});
+				var routeTask11 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network11/NAServer/Route"
+				});
+				var routeTask12 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network12/NAServer/Route"
+				});
+				var routeTask13 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network13/NAServer/Route"
+				});
+				var routeTask14 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network14/NAServer/Route"
+				});
+				var routeTask15 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network15/NAServer/Route"
+				});
+				var routeTask16 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network16/NAServer/Route"
+				});
+				var routeTask17 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network17/NAServer/Route"
+				});
+				var routeTask18 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network18/NAServer/Route"
+				});
+				var routeTask19 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network19/NAServer/Route"
+				});
+				var routeTask20 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network20/NAServer/Route"
+				});
+				var routeTask21 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network21/NAServer/Route"
+				});
+				var routeTask22 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network22/NAServer/Route"
+				});
+				var routeTask23 = new RouteTask({
+					url: "http://localhost:6080/arcgis/rest/services/nycnet/network23/NAServer/Route"
+				});
+
+				var densitylayer0 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density0",
+					opacity: 0.5
+				});
+				var densitylayer1 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density1",
+					opacity: 0.5
+				});
+				var densitylayer2 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density2",
+					opacity: 0.5
+				});
+				var densitylayer3 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density3",
+					opacity: 0.5
+				});
+				var densitylayer4 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density4",
+					opacity: 0.5
+				});
+				var densitylayer5 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density5",
+					opacity: 0.5
+				});
+				var densitylayer6 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density6",
+					opacity: 0.5
+				});
+				var densitylayer7 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density7",
+					opacity: 0.5
+				});
+				var densitylayer8 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density8",
+					opacity: 0.5
+				});
+				var densitylayer9 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density9",
+					opacity: 0.5
+				});
+				var densitylayer10 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density10",
+					opacity: 0.5
+				});
+				var densitylayer11 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density11",
+					opacity: 0.5
+				});
+				var densitylayer12 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density12",
+					opacity: 0.5
+				});
+				var densitylayer13 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density13",
+					opacity: 0.5
+				});
+				var densitylayer14 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density14",
+					opacity: 0.5
+				});
+				var densitylayer15 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density15",
+					opacity: 0.5
+				});
+				var densitylayer16 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density16",
+					opacity: 0.5
+				});
+				var densitylayer17 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density17",
+					opacity: 0.5
+				});
+				var densitylayer18 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density18",
+					opacity: 0.5
+				});
+				var densitylayer19 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density19",
+					opacity: 0.5
+				});
+				var densitylayer20 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density20",
+					opacity: 0.5
+				});
+				var densitylayer21 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density21",
+					opacity: 0.5
+				});
+				var densitylayer22 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density22",
+					opacity: 0.5
+				});
+				var densitylayer23 = new ImageryLayer({
+					url: "http://localhost:6080/arcgis/rest/services/density/den0/ImageServer",
+					title: "density23",
+					opacity: 0.5
+				});
+				
+				var routeLayer = new GraphicsLayer({
+					title: "route"
+				});
+
+				var demographicGroupLayer = new GroupLayer({
+					title: "Layer Group",
+					visible: true,
+					visibilityMode: "exclusive",
+					layers: [densitylayer23, densitylayer22, densitylayer21, densitylayer20, densitylayer19, densitylayer18, densitylayer17, densitylayer16,
+					densitylayer15, densitylayer14, densitylayer13, densitylayer12, densitylayer11, densitylayer10, densitylayer9, densitylayer8, densitylayer7,
+					densitylayer6, densitylayer5, densitylayer4, densitylayer3, densitylayer2, densitylayer1, densitylayer0],
+					opacity: 0.75
+				});
+				
+				for(var i = 23; i >= 0; i--){
+					var time = "density" + hh;
+					var a = demographicGroupLayer.layers.items[i].title.toString()
+					if(time != a){
+						demographicGroupLayer.remove(demographicGroupLayer.layers.items[i])
+					}
+				}
+				demographicGroupLayer.add(routeLayer);
+				
+				var stopSymbol = {
+					type: "simple-marker",
+					style: "cross",
+					size: 15,
+					outline: {
+						width: 4
+					}
+				};
+
+				var routeSymbol = {
+					type: "simple-line",
+					color: [0, 0, 255, 0.5],
+					width: 5
+				};
+
+				var map = new Map({
+					basemap: "national-geographic",
+					layers: [demographicGroupLayer]
+				});
+				var view = new MapView({
+					container: "viewDiv",
+					map: map,
+					center: [-73.98, 40.64],
+					zoom: 14
+				});
+				view.constraints = {
+					minZoom: 3
+				}
+				var scaleBar = new ScaleBar({
+					view: view,
+					unit: "metric",
+					style: "ruler"
+				});
+				view.ui.add(scaleBar, {
+					position: "bottom-right"
+				});
+				var layerList = new LayerList({
+					view: view
+				});
+				view.ui.add(layerList, "bottom-left");
+				view.ui.remove("zoom");
+
+				var stop1 = new Graphic({
+					symbol: stopSymbol,
+					});
+				var stop2 = new Graphic({
+					symbol: stopSymbol,
+					});
+				view.on("click", addStop);
+				i = 0;
+				function addStop(event) {
+					if (i == 2) {
+						routeLayer.removeAll();
+						stop1.geometry = null;
+						stop2.geometry = null;
+						i = 0;
+					}
+					
+					if(i == 0){
+						stop1.geometry = event.mapPoint;
+						routeLayer.remove(stop1);
+						routeLayer.add(stop1);
+						i = i + 1;
+					}
+					else if(i == 1){
+						stop2.geometry = event.mapPoint;
+						routeLayer.add(stop2);
+						
+						var routeParams = new RouteParameters({
+							stops: new FeatureSet(),
+							outSpatialReference: {
+								wkid: 3857
+							}
+						});
+						routeParams.stops.features.push(stop1);
+						routeParams.stops.features.push(stop2);
+						if (routeParams.stops.features.length >= 2) {
+							
+							switch (hh) {
+								case 0:
+									routeTask0.solve(routeParams).then(showRoute);
+									break;
+								case 1:
+									routeTask1.solve(routeParams).then(showRoute);
+									break;
+								case 2:
+									routeTask2.solve(routeParams).then(showRoute);
+									break;
+								case 3:
+									routeTask3.solve(routeParams).then(showRoute);
+									break;
+								case 4:
+									routeTask4.solve(routeParams).then(showRoute);
+									break;
+								case 5:
+									routeTask5.solve(routeParams).then(showRoute);
+									break;
+								case 6:
+									routeTask6.solve(routeParams).then(showRoute);
+									break;
+								case 7:
+									routeTask7.solve(routeParams).then(showRoute);
+									break;
+								case 8:
+									routeTask8.solve(routeParams).then(showRoute);
+									break;
+								case 9:
+									routeTask9.solve(routeParams).then(showRoute);
+									break;
+								case 10:
+									routeTask10.solve(routeParams).then(showRoute);
+									break;
+								case 11:
+									routeTask11.solve(routeParams).then(showRoute);
+									break;
+								case 12:
+									routeTask12.solve(routeParams).then(showRoute);
+									break;
+								case 13:
+									routeTask13.solve(routeParams).then(showRoute);
+									break;
+								case 14:
+									routeTask14.solve(routeParams).then(showRoute);
+									break;
+								case 15:
+									routeTask15.solve(routeParams).then(showRoute);
+									break;
+								case 16:
+									routeTask16.solve(routeParams).then(showRoute);
+									break;
+								case 17:
+									routeTask17.solve(routeParams).then(showRoute);
+									break;
+								case 18:
+									routeTask18.solve(routeParams).then(showRoute);
+									break;
+								case 19:
+									routeTask19.solve(routeParams).then(showRoute);
+									break;
+								case 20:
+									routeTask20.solve(routeParams).then(showRoute);
+									break;
+								case 21:
+									routeTask21.solve(routeParams).then(showRoute);
+									break;
+								case 22:
+									routeTask22.solve(routeParams).then(showRoute);
+									break;
+								case 23:
+									routeTask23.solve(routeParams).then(showRoute);
+									break;
+							}
+							routeLayer.remove(stop1);
+						}
+						
+						i = i + 1;
+					}
+					console.log(stop1);
+					console.log(stop2);
+					
+				}
+
+				function showRoute(data) {
+					var routeResult = data.routeResults[0].route;
+					routeResult.symbol = routeSymbol;
+					routeLayer.add(routeResult);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<header id="header" class="skel-layers-fixed">
+			<h1><a href="#">NYC Traffic Accident Analysis</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a style = "font-weight:bold" href="index.html">Home</a></li>
+					<li><a style = "font-weight:bold" href="network.html">Network Analysis</a></li>
+					<li>
+					<div class="dropdown">
+					<button class="dropbtn" style = "font-weight:bold">Time analysis</button>
+					<div class="dropdown-content">
+						<a href="change.html">Changes in year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+						<a href="borough.html">Changes in boroughs</a>
+						<a href="series.html">Time series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</a>
+					</div>
+					</div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div id="viewDiv"></div>
+	</body>
+</html>

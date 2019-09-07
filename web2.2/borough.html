@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>NYC Traffic Accident Analysis</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<link rel="stylesheet" href="swiper/dist/css/swiper.min.css">
+<style>
+.dropbtn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+	color: #555f66;
+		font-family: "Roboto", Helvetica, sans-serif;
+		display: inline-block;
+		text-decoration: none;
+		font-size: 1em;
+		font-weight: 300;
+		line-height: 1.75em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+	width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	font-size: 0.8em;
+	font-weight: bold
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 2px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -390px;
+  left: -400px;
+  transition: opacity 0.5s;
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -50px;
+border-width: 0px;
+border-style: solid;
+border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+
+input[type="range"] {
+	display: block;
+	-webkit-appearance: none;
+	background-color: #bdc3c7;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	margin: 0 auto;
+	outline: 0;
+	}
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: #e74c3c;
+	width: 50px;height: 30px;
+	border-radius: 50%;
+	border: 2px solid white;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	}
+.range{
+	position:relative;
+	width:200px;
+	left:50px;
+	margin:0 auto;
+	}
+.rang_width{
+	position:absolute;
+	top:-15px;
+	left:0px;
+	background:#f00;
+	height:10px;
+	border-radius:5px 0 0 5px;
+	}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 2px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  transition: opacity 0.5s;
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -50px;
+border-width: 0px;
+border-style: solid;
+border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+</style>
+		
+	</head>
+	
+
+	
+	<body id="top">
+
+			<!-- Header -->
+			<header id="header" class="skel-layers-fixed" >
+				<h1><a href="#">NYC Traffic Accident Analysis</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a style = "font-weight:bold" href="index.html">Home</a></li>
+						<li><a style = "font-weight:bold" href="network.html">Network Analysis</a></li>
+						<li>
+						<div class="dropdown">
+						<button class="dropbtn" style = "font-weight:bold">Time analysis</button>
+						<div class="dropdown-content">
+						<a href="change.html">Changes in year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+						<a href="borough.html">Changes in boroughs</a>
+						<a href="series.html">Time series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</a>
+						</div>
+						</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<section id="one" class="wrapper style1">
+				<div class="container">
+					<div class="row">
+					<h2 style="text-align:center;color:black;font-weight:bold">Types of car accidents in various districts of New York City 2015-2018</h2>
+						<div class="6u" >
+							<section align="center">
+							<h3 style="text-align:center;color:black;font-weight:bold">New York City Bouroughs</h3><br>
+							<a href="#" class="image fit"><img src="images/block11.png" alt="" ></a>
+							<p>The color of each bourough in this map is relative to the color of that in following bar plot.</p>
+							</section>
+						</div>
+						
+						<div class="6u">
+							<section>
+								<div style="text-align:center;font-weight:bold;font-size:28;color:black" >BRONX 
+								</div>
+								<!-- <h2>Types of car accidents in various districts of New York City 2015-2018</h2> -->
+								<div id="myDiv" align="center"></div>
+						
+								<div class="range">				
+										<h5 style="font-weight:bold;text-align:center;">Please drag me</h5>
+									<input type="range" min="0" max="3" step="1" value="0" name="BRONX">
+									<p class="rang_width"></p>
+								</div>
+								
+								<script>
+									var img0 = document.createElement("img");
+									img0.src = "GIF/15BRONX.png";  
+									var img1 = document.createElement("img");
+									img1.src = "GIF/16BRONX.png";
+									var img2 = document.createElement("img");
+									img2.src = "GIF/17BRONX.png";
+									var img3 = document.createElement("img");
+									img3.src = "GIF/18BRONX.png";
+									
+									var myDiv = document.getElementById('myDiv');
+									myDiv.appendChild(img0);
+									var elem = document.querySelector('input[name="BRONX"]');
+									
+									var rangeValue = function(){
+									var newValue = elem.value;
+									
+									var myDiv = document.getElementById('myDiv');
+									
+									if(newValue == 0){
+									myDiv.innerHTML = "";
+									myDiv.appendChild(img0);  
+									}else if(newValue == 1){
+									myDiv.innerHTML = "";
+									myDiv.appendChild(img1);
+									}else if(newValue == 2){
+									myDiv.innerHTML = "";
+									myDiv.appendChild(img2);
+									}else{
+									myDiv.innerHTML = "";
+									myDiv.appendChild(img3);
+									}
+									};
+									elem.addEventListener("input", rangeValue);
+								</script>
+								<p style="text-align:justify">In the Bronx area, the cause of most car accidents every year is unclear, and the second most common cause of the accident is due to Driven inattention. The third leading cause of a car accident is caused by other vehicle, except for 15 years, the rest of the year is due to following too close.</p>
+								<br>
+							</section>
+						</div>
+						
+						<div class="6u">
+							<section>	
+								<div style="text-align:center;font-weight:bold;font-size:28" >BROOKLYN
+								</div>
+								<div id="myDiv2" align="center"></div>
+								<div class="range">
+									<h5 style="font-weight:bold;text-align:center;">Please drag me</h5>
+									<input type="range" min="0" max="3" step="1" value="0" name="BROOKLYN">
+									<p class="rang_width"></p>
+								</div>
+								<script>
+									var img4 = document.createElement("img");
+									img4.src = "GIF/15BROOKLYN.png";  
+									var img5 = document.createElement("img");
+									img5.src = "GIF/16BROOKLYN.png";
+									var img6 = document.createElement("img");
+									img6.src = "GIF/17BROOKLYN.png";
+									var img7 = document.createElement("img");
+									img7.src = "GIF/18BROOKLYN.png";
+									
+									var myDiv2 = document.getElementById('myDiv2');
+									myDiv2.appendChild(img4);
+									var elem2 = document.querySelector('input[name="BROOKLYN"]');
+									
+									var rangeValue2 = function(){
+									var newValue = elem2.value;
+									
+									var myDiv2 = document.getElementById('myDiv2');
+									
+									if(newValue == 0){
+									myDiv2.innerHTML = "";
+									myDiv2.appendChild(img4);  
+									}else if(newValue == 1){
+									myDiv2.innerHTML = "";
+									myDiv2.appendChild(img5);
+									}else if(newValue == 2){
+									myDiv2.innerHTML = "";
+									myDiv2.appendChild(img6);
+									}else{
+									myDiv2.innerHTML = "";
+									myDiv2.appendChild(img7);
+									}
+									};
+									elem2.addEventListener("input", rangeValue2);
+								</script>
+								<p style="text-align:justify">In the Brooklyn area, the most common cause of car accidents each year is unclear, and the next most common cause of car accidents is due to Driven inattention. The third leading cause of car accidents occurred in 2015 due to driver fatigue, due to failure to yield right-of-way in 2016, and 2017 and 2018 due to following too close.</p>
+								<br>
+							</section>
+						</div>
+						
+						<div class="6u">
+							<section>
+								<div style="text-align:center;font-weight:bold;font-size:28" >QUEENS
+								</div>
+								<div id="myDiv3" align="center"></div>
+								<div class="range">
+									<h5 style="font-weight:bold;text-align:center;">Please drag me</h5>
+									<input type="range" min="0" max="3" step="1" value="0" name="QUEENS">
+									<p class="rang_width"></p>
+								</div>
+								<script>
+									var img8 = document.createElement("img");
+									img8.src = "GIF/15QUEEN.png";  
+									var img9 = document.createElement("img");
+									img9.src = "GIF/16QUEEN.png";
+									var img10 = document.createElement("img");
+									img10.src = "GIF/17QUEEN.png";
+									var img11 = document.createElement("img");
+									img11.src = "GIF/18QUEEN.png";
+									
+									var myDiv3 = document.getElementById('myDiv3');
+									myDiv3.appendChild(img8);
+									var elem3 = document.querySelector('input[name="QUEENS"]');
+									
+									var rangeValue3 = function(){
+									var newValue = elem3.value;
+									
+									var myDiv3 = document.getElementById('myDiv3');
+									
+									if(newValue == 0){
+									myDiv3.innerHTML = "";
+									myDiv3.appendChild(img8);  
+									}else if(newValue == 1){
+									myDiv3.innerHTML = "";
+									myDiv3.appendChild(img9);
+									}else if(newValue == 2){
+									myDiv3.innerHTML = "";
+									myDiv3.appendChild(img10);
+									}else{
+									myDiv3.innerHTML = "";
+									myDiv3.appendChild(img11);
+									}
+									};
+									elem3.addEventListener("input", rangeValue3);
+								</script>
+								<p style="text-align:justify">In the Manhattan area, the two major causes of car accidents are unspecified and Driven inattention, and the most common cause of the car accident in 2015 is unknown, while the remaining years of Driven inattention are the main cause of the car accident. The third major reason was caused by other vehicle in 2015, and the following years were due to following too closely.</p>
+								<br>
+							</section>
+						</div>
+						
+						<div class="6u">
+							<section>	
+								<div style="text-align:center;font-weight:bold;font-size:28" >MANHATTAN
+								</div>
+								<div id="myDiv4" align="center"></div>
+								<div class="range">
+									<h5 style="font-weight:bold;text-align:center;">Please drag me</h5>
+									<input type="range" min="0" max="3" step="1" value="0" name="MANHATTAN">
+									<p class="rang_width"></p>
+								</div>
+								<script>
+									var img12 = document.createElement("img");
+									img12.src = "GIF/15MAN.png";  
+									var img13 = document.createElement("img");
+									img13.src = "GIF/16MAN.png";
+									var img14 = document.createElement("img");
+									img14.src = "GIF/17MAN.png";
+									var img15 = document.createElement("img");
+									img15.src = "GIF/18MAN.png";
+									
+									var myDiv4 = document.getElementById('myDiv4');
+									myDiv4.appendChild(img12);
+									var elem4 = document.querySelector('input[name="MANHATTAN"]');
+									
+									var rangeValue4 = function(){
+									var newValue = elem4.value;
+									
+									var myDiv4 = document.getElementById('myDiv4');
+									
+									if(newValue == 0){
+									myDiv4.innerHTML = "";
+									myDiv4.appendChild(img12);  
+									}else if(newValue == 1){
+									myDiv4.innerHTML = "";
+									myDiv4.appendChild(img13);
+									}else if(newValue == 2){
+									myDiv4.innerHTML = "";
+									myDiv4.appendChild(img14);
+									}else{
+									myDiv4.innerHTML = "";
+									myDiv4.appendChild(img15);
+									}
+									};
+									elem4.addEventListener("input", rangeValue4);
+								</script>
+								<p style="text-align:justify">In Queens, the two biggest causes of car accidents are unspecified and Driven inattention, the reasons for the most car accidents in 2015 and 2016 are unclear, and the most common car accidents in 2017 and 2018 are due to Driven inattention. The third major cause was caused by driving fatigue in 2015, and the rest of the years were due to following too closely.</p>
+								<br>
+							</section>
+							
+						</div>
+						<div class="6u">
+							<section>		
+								<div style="text-align:center;font-weight:bold;font-size:28" >STATEN ISLAND
+								</div>
+								<div id="myDiv5" align="center"></div>
+								<div class="range">
+									<h5 style="font-weight:bold;text-align:center;">Please drag me</h5>
+									<input type="range" min="0" max="3" step="1" value="0" name="STATEN ISLAND">
+									<p class="rang_width"></p>
+								</div>
+								<script>
+									var img16 = document.createElement("img");
+									img16.src = "GIF/15STATEN2.png";  
+									var img17 = document.createElement("img");
+									img17.src = "GIF/16STATEN.png";
+									var img18 = document.createElement("img");
+									img18.src = "GIF/17STATEN.png";
+									var img19 = document.createElement("img");
+									img19.src = "GIF/18STATEN.png";
+									
+									var myDiv5 = document.getElementById('myDiv5');
+									myDiv5.appendChild(img16);
+									var elem5 = document.querySelector('input[name="STATEN ISLAND"]');
+									
+									var rangeValue5 = function(){
+									var newValue = elem5.value;
+									
+									var myDiv5 = document.getElementById('myDiv5');
+									
+									if(newValue == 0){
+									myDiv5.innerHTML = "";
+									myDiv5.appendChild(img16);  
+									}else if(newValue == 1){
+									myDiv5.innerHTML = "";
+									myDiv5.appendChild(img17);
+									}else if(newValue == 2){
+									myDiv5.innerHTML = "";
+									myDiv5.appendChild(img18);
+									}else{
+									myDiv5.innerHTML = "";
+									myDiv5.appendChild(img19);
+									}
+									};
+									elem5.addEventListener("input", rangeValue5);
+								</script>
+								<p style="text-align:justify">In Staten Island, the two major causes of car accidents are unspecified and Driven inattention, the most common cause of car accidents in 2015 is unclear, and the remaining years of Driven inattention are the main cause of car accidents. The third major cause is due to 2015, and the rest of the years were due to following too closely.</p>
+								<br>
+							</section>
+						</div>
+					
+					
+					</div>
+				</div>
+			</section>
+			
+
+
+		
+			
+		
+
+	</body>
+</html>

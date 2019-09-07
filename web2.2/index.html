@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>NYC Traffic Accident Analysis</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		
+<style>
+.dropbtn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+	color: #555f66;
+		font-family: "Roboto", Helvetica, sans-serif;
+		display: inline-block;
+		text-decoration: none;
+		font-size: 1em;
+		font-weight: 300;
+		line-height: 1.75em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+	width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	font-size: 0.8em;
+	font-weight: bold
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 2px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -390px;
+  left: -400px;
+  transition: opacity 0.5s;
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -50px;
+border-width: 0px;
+border-style: solid;
+border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+
+</style>
+		
+	</head>
+	
+
+	
+	<body id="top">
+
+			<!-- Header -->
+			<header id="header" class="skel-layers-fixed" >
+				<h1><a href="#">NYC Traffic Accident Analysis</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a style = "font-weight:bold" href="index.html">Home</a></li>
+						<li><a style = "font-weight:bold" href="network.html">Network Analysis</a></li>
+						<li>
+						<div class="dropdown">
+						<button class="dropbtn" style = "font-weight:bold">Time analysis</button>
+						<div class="dropdown-content">
+						<a href="change.html">Changes in year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+						<a href="borough.html">Changes in boroughs</a>
+						<a href="series.html">Time series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</a>
+						</div>
+						</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Banner -->
+		<!-- Banner -->
+			<section id="banner">
+				<div  class="inner">
+					<p style = "color:white;font-weight:bold"><font size="6">NYC Traffic Accident Analysis Based on Motor Vehicle Collision (MVC) Data</font></p>
+				
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="one" class="wrapper style1" style="background-color:#fcfce8">
+				<div class="container">
+					<div class="row">
+						<div class="6u">
+							<section>
+								<h2 style = "font-weight:bold">Introduction</h2>
+								
+								<p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252324.41957661402!2d-74.16472482346147!3d40.74889678024703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2z576O5Zu957q957qm5bee57q957qm!5e0!3m2!1szh-CN!2shk!4v1555244144259!5m2!1szh-CN!2shk" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+								</p>
+							</section>
+						</div>
+						<div class="6u">
+							<section>
+							<h2></h2>
+								<p style="text-align:justify"><br>Worldwide, <span style = "font-weight:bold">motor vehicle collisions</span> lead to excessive impact to both individuals and society. As for individuals, injuries, disability, long-lasting psychological trauma, and even death may unfortunately occur from these issues. As for society, financial costs can occur to constrain the development of cities. Residents may feel the sense of insecurity as well.<br>
+								<br>Residents and citizens expect to see the decreasing and reduction of the occurrence of motor vehicle collision. Assuming we are the staff in government office of New York City, our obligation is the statistics and analysis of New York City MVC data. The results and conclusions may be sent to New York Traffic Bureau or other agencies to assist them take actions.<br>
+								<br>In this website, the statistical and analytical results of motor vehicle collisions events are all displayed by some techniques.<span style = "font-weight:bold"> Click the button below to see statistics of traffic accident</span>
+								<br><span class="tooltip" style="font-size:36;border:solid;float:right">Statistics<span class="tooltiptext"><img src="images/bar.png" alt=""></span></span>
+								
+								</p>
+							</section>
+						</div>
+					
+					</div>
+				</div>
+			</section>
+			
+
+
+		
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row double">
+						<div class="12u" align="center">
+									<h4 style = "font-weight:bold">Designed by</h4>
+									
+									    <p>Zhang Chao &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Zhou Jun&nbsp;<br />
+										Chen Hongdan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liu Wei&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+										Zou Chengchang &nbsp;&nbsp; Zhong Lin</p>
+									
+								</div>
+						
+					</div>
+					
+				</div>
+			</footer>
+
+	</body>
+</html>

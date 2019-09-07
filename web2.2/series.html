@@ -1,0 +1,164 @@
+
+
+<html>
+	<head>
+		<title>Time Series</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta charset="utf-8">
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<link rel="stylesheet" href="css/swiper.min.css">
+	<style>
+.dropbtn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+	color: #555f66;
+		font-family: "Roboto", Helvetica, sans-serif;
+		display: inline-block;
+		text-decoration: none;
+		font-size: 1em;
+		font-weight: 300;
+		line-height: 1.75em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+	width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	font-size: 0.8em;
+	font-weight: bold
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+    .swiper-container {
+      width: 70%;
+      height: 65%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color:#000;
+      opacity: 1;
+      background: rgba(0,0,0,0.2);
+    }
+    .swiper-pagination-bullet-active {
+      color:#fff;
+      background: #007aff;
+    }
+</style>
+</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed" >
+				<h1><a href="#">NYC Traffic Accident Analysis</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a style = "font-weight:bold" href="index.html">Home</a></li>
+						<li><a style = "font-weight:bold" href="network.html">Network Analysis</a></li>
+						<li>
+						<div class="dropdown">
+						<button class="dropbtn" style = "font-weight:bold">Time analysis</button>
+						<div class="dropdown-content">
+						<a href="change.html">Changes in year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+						<a href="borough.html">Changes in boroughs</a>
+						<a href="series.html">Time series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</a>
+						</div>
+						</div>
+						</li>
+
+   
+					</ul>
+				</nav>
+			</header>
+			
+			<div style="text-align:center;font-size:40;color:black;font-weight:bold"><br><br>Time-series Analysis of New York City Motor Vehicle Collision Data</div>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src = "images/time changing.jpg" alt = "OMG" width="660" height="397"></div>
+					<div class="swiper-slide"><img src = "images/year changing.jpg" alt = "OMG" width="660" height="397"></div>
+					<div class="swiper-slide"><img src = "images/seasonal changing.jpg" alt = "OMG" width="660" height="397"></div>
+					<div class="swiper-slide"><img src = "images/2019prediction.jpg" alt = "OMG" width="660" height="397"></div>
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		<!-- Swiper JS -->
+			<script src="js/swiper.min.js"></script>	
+			<script>
+				var swiper = new Swiper('.swiper-container', {
+					navigation:{
+						nextEl:'.swiper-button-next',
+						prevEl:'.swiper-button-prev',
+					},
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+						renderBullet: function (index, className) {
+							return '<span class="' + className + '">' + (index + 1) + '</span>';
+						},
+					},
+				});
+			</script>
+	</body>
+</html>
